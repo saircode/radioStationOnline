@@ -30,5 +30,4 @@ npm run build
 
 ## explaining the development on video
 
-1. Instalacion de vue
-https://youtu.be/hB6fD2rqGh0
+Visit my website: https://sairsanchez.com/portafolio/spa-de-radio-online-con-vue-js-y-laravel/
