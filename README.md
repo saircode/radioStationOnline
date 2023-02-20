@@ -27,3 +27,8 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## explaining the development on video
+
+1. Instalacion de vue
+https://youtu.be/hB6fD2rqGh0
