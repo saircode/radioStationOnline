@@ -1,30 +1,59 @@
 <script>
-import { reactive, ref, watch } from 'vue';
+import { computed, reactive, ref, watch } from 'vue';
 export default {
     name: 'Player',
     props: {
         audioUrl: {
             required: true, 
-            default: 'https://18123.live.streamtheworld.com/TROPICANAAAC.aac',
+            default: null,
             type: String
         }
     },
     setup(props, {emit}) {
         let playing = ref(false),
-            audio = ref (new Audio(props.audioUrl) )
+            audio = ref(null);
 
         const play = (()=>{
+            if(!props.audioUrl) {
+                alert('Seleccione una ciudad');
+                playing.value = false;
+                return;
+            }
+
             audio.value.play();
+            playing.value = true;
+
         })
 
         const pause = (()=>{
             audio.value.pause();
+            playing.value = false;
         })
 
         watch(()=>playing.value, ( currentValue , oldValue) => { 
             if(currentValue)play()
             else pause();
         });
+
+        watch(()=> props.audioUrl, (currentValue, oldValue)=> {
+            if(currentValue){
+
+                if(playing.value) pause();
+
+                setTimeout(() => {
+                    audio.value = null;
+                }, 100);
+        
+                
+                setTimeout(() => {
+                    audio.value = new Audio(currentValue);
+                    play()
+                }, 1000);
+            }
+
+                
+
+        })
 
         return {
             playing,

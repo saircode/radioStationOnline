@@ -7,8 +7,20 @@
             Player
         },
         setup() {
+            let citySelected = ref(null),
+                cities = ref([
+                    {name: 'Medellin - besame' , urlAudio: 'https://24083.live.streamtheworld.com/BESAME_MEDELLINAAC.aac'},
+                    {name: 'Bogota - tropicana' , urlAudio: 'https://18123.live.streamtheworld.com/TROPICANAAAC.aac'},
+                    {name: 'Monteria - radio 1' , urlAudio: 'https://www.colombia.com/dfdcae47-7a77-45c9-9542-f1da9eda83da'},
+                    {name: 'Cali' , urlAudio: 'https://sonic.cloudstreaming.eu:10998/;'},
+                    {name: 'Cartagena - la cariñosa' , urlAudio: 'https://www.colombia.com/fe57c759-c511-44ac-b143-62410fe60126'},
+                    {name: 'Barranquilla - olimpica' , urlAudio: 'https://26653.live.streamtheworld.com/OLP_BARRANQUILLAAAC.aac'}
+                ])
             
-           
+            return {
+                citySelected, 
+                cities
+            }
         },
     }
 </script>
@@ -37,16 +49,17 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        Ciudades
+                        {{ citySelected ? citySelected.name : 'Seleccionar ciudad' }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" v-for="(city,key) in cities" :key="key"
+                            @click="citySelected=city" href="#">
+                            {{ city.name }}
+                        </a>
                     </div>
                 </li>
             </ul>
-            <player />
+            <player :audioUrl="citySelected ? citySelected.urlAudio : null" />
         </div>
     </nav>
 
