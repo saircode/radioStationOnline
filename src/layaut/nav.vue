@@ -11,9 +11,7 @@
                 cities = ref([
                     {name: 'Medellin - besame' , urlAudio: 'https://24083.live.streamtheworld.com/BESAME_MEDELLINAAC.aac'},
                     {name: 'Bogota - tropicana' , urlAudio: 'https://18123.live.streamtheworld.com/TROPICANAAAC.aac'},
-                    {name: 'Monteria - radio 1' , urlAudio: 'https://www.colombia.com/dfdcae47-7a77-45c9-9542-f1da9eda83da'},
-                    {name: 'Cali' , urlAudio: 'https://sonic.cloudstreaming.eu:10998/;'},
-                    {name: 'Cartagena - la cariñosa' , urlAudio: 'https://www.colombia.com/fe57c759-c511-44ac-b143-62410fe60126'},
+                    {name: 'Monteria - olimpica' , urlAudio: 'https://20833.live.streamtheworld.com/OLP_MONTERIAAAC.aac?dist=OlpMonWeb'},
                     {name: 'Barranquilla - olimpica' , urlAudio: 'https://26653.live.streamtheworld.com/OLP_BARRANQUILLAAAC.aac'}
                 ])
             
@@ -46,7 +44,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Programación</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown active" >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         {{ citySelected ? citySelected.name : 'Seleccionar ciudad' }}
