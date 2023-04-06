@@ -1,7 +1,11 @@
 <script>
+import {RouterLink} from 'vue-router' ;    
 import { ref } from 'vue'
     export default {
         name: 'SliderNew',
+        components:{
+            RouterLink
+        },
         setup(){
             let dataNews = ref([
                 {tag: 'noticia-1', title: 'Noticia 1' , body: 'Lorem ipsum dolor', img: '/assets/img/newsSliderDemo/1.svg'},
@@ -20,10 +24,12 @@ import { ref } from 'vue'
 <template>
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item" :class="{'active' : key===0}" v-for="(item , key) in dataNews" :key="key">
-          <img class="d-block w-100" :src="item.img" :alt="item.title">
+        <div style="cursor:pointer;" class="carousel-item"
+            :class="{'active' : key===0}" v-for="(item , key) in dataNews" :key="key">
+          <router-link :to="'noticias/'+item.tag">
+            <img class="d-block w-100" :src="item.img" :alt="item.title">
+          </router-link>
         </div>
-        
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
