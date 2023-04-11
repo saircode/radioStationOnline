@@ -1,7 +1,8 @@
 <script>
-    import {computed, ref} from 'vue'
+    import {computed, onMounted, ref} from 'vue'
     import {RouterLink} from 'vue-router' ;    
     import Player from '../components/Player.vue';
+    import serviceCityStations from '../services/serviceCityStations';
     export default {
         name: 'navLayaut',
         components: {
@@ -9,17 +10,30 @@
             RouterLink
         },
         setup() {
+            onMounted(()=>{
+                getCitiesStation();
+            })
+
             let citySelected = ref(null),
                 cities = ref([
                     {name: 'Medellin - besame' , urlAudio: 'https://24083.live.streamtheworld.com/BESAME_MEDELLINAAC.aac'},
                     {name: 'Bogota - tropicana' , urlAudio: 'https://18123.live.streamtheworld.com/TROPICANAAAC.aac'},
                     {name: 'Monteria - olimpica' , urlAudio: 'https://20833.live.streamtheworld.com/OLP_MONTERIAAAC.aac?dist=OlpMonWeb'},
                     {name: 'Barranquilla - olimpica' , urlAudio: 'https://26653.live.streamtheworld.com/OLP_BARRANQUILLAAAC.aac'}
-                ])
+                ]),
+
+                getCitiesStation = (()=>{
+                    serviceCityStations.getCitiesStations()
+                    .then(res=>{
+                        console.log(res.data)
+                    })
+                })
+
+
             
             return {
                 citySelected, 
-                cities
+                cities,getCitiesStation
             }
         },
 
