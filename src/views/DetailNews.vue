@@ -19,8 +19,8 @@ export default {
 </script>
 
 <template>
-  <div class="container mt-4">
-    <div class="card mt-4">
+  <div class="container" style="margin-top: 100px;" >
+    <div class="card">
       <div class="card-header">
         <h1>{{ dataNew.title }}</h1>
         <h5>{{ dataNew.date }}</h5>

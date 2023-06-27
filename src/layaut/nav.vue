@@ -41,8 +41,8 @@
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mb-4">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" >
+        <div class="container-fluid" >
             <a class="navbar-brand" href="#">Radio Station Online</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,6 +80,6 @@
         </div>
         
     </nav>
-    <br><br>
+ 
 
 </template>
