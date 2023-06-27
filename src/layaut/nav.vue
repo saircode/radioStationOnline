@@ -15,17 +15,12 @@
             })
 
             let citySelected = ref(null),
-                cities = ref([
-                    {name: 'Medellin - besame' , urlAudio: 'https://24083.live.streamtheworld.com/BESAME_MEDELLINAAC.aac'},
-                    {name: 'Bogota - tropicana' , urlAudio: 'https://18123.live.streamtheworld.com/TROPICANAAAC.aac'},
-                    {name: 'Monteria - olimpica' , urlAudio: 'https://20833.live.streamtheworld.com/OLP_MONTERIAAAC.aac?dist=OlpMonWeb'},
-                    {name: 'Barranquilla - olimpica' , urlAudio: 'https://26653.live.streamtheworld.com/OLP_BARRANQUILLAAAC.aac'}
-                ]),
+                cities = ref(),
 
                 getCitiesStation = (()=>{
                     serviceCityStations.getCitiesStations()
                     .then(res=>{
-                        console.log(res.data)
+                        cities.value = res.data;
                     })
                 })
 
@@ -80,7 +75,7 @@
                     </div>
                 </li>
             </ul>
-            <player :audioUrl="citySelected ? citySelected.urlAudio : null" />
+            <player :audioUrl="citySelected ? citySelected.url_live_audio : null" />
         </div>
         </div>
         
